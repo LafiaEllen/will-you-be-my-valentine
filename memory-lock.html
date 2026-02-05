@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Our Secret Door ♡</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="lock-page">
+  <div class="card lock-card">
+    <h1>Our Memory Gallery</h1>
+    <p>This page is only for you and me.</p>
+    <p>Type the secret date to open the door. 💌</p>
+    <p class="hint" id="hintText">Hint: Our Anni Date (4 digits)</p>
+
+    <div class="password-area">
+      <input
+        type="password"
+        id="pwInput"
+        placeholder="Enter password"
+        autofocus
+      />
+      <br />
+      <button id="pwBtn">Enter</button>
+      <div class="error" id="pwError"></div>
+    </div>
+  </div>
+
+  <script>
+    const CORRECT_PASSWORD = "1412";
+
+    const pwInput = document.getElementById("pwInput");
+    const pwBtn   = document.getElementById("pwBtn");
+    const pwError = document.getElementById("pwError");
+    const hint    = document.getElementById("hintText");
+
+    function tryUnlock() {
+      const value = pwInput.value.trim();
+      if (value === CORRECT_PASSWORD) {
+        pwError.textContent = "";
+        window.location.href = "memory.html";
+      } else {
+        pwError.textContent = "Wrong password, my love. Try again~";
+        hint.style.display = "block";
+        pwInput.value = "";
+        pwInput.focus();
+      }
+    }
+
+    pwBtn.addEventListener("click", tryUnlock);
+    pwInput.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        tryUnlock();
+      }
+    });
+  </script>
+</body>
+</html>

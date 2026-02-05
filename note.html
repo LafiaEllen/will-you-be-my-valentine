@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Little Note For You ♡</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .note-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-align: left;
+      margin-top: 10px;
+      white-space: pre-line;
+    }
+
+    .kiss-notice {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 107, 170, 0.97);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 18px rgba(255, 80, 160, 0.45);
+      z-index: 999;
+      display: none; 
+    }
+
+    .kiss-notice button {
+      margin-left: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.486);
+      color: #fff;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="memory-page">
+  <div class="kiss-notice" id="kissNotice">
+    Please give me kisses after this 💋
+    <button id="kissClose"> ₊˚⊹♡ </button>
+  </div>
+
+  <div class="card memory-card">
+    <h1>Little note for you ♡ ۶ৎ</h1>
+
+    <p class="note-text">
+        I am really glad that we became friends. 🩷🤍
+        
+        Thank you for loving me and making me feel loved.
+        Thank you for letting me love you too.
+        Thank you for always being patient with me and being there for me. 
+        Thank you for listening my vents.
+        Thank you for choosing me.
+        Thank you for coming into my life.
+
+        I love you so so so so much My Love. ♡✧
+        My Baby, My One and Only, My Kushi. ۶ৎ𝄞
+    </p>
+
+    <a class="btn-next" href="memory.html">Back to our memories</a>
+  </div>
+
+  <script>
+    const notice = document.getElementById('kissNotice');
+    const closeBtn = document.getElementById('kissClose');
+
+    // Always show after 3 seconds when entering this page
+    setTimeout(() => {
+      notice.style.display = 'inline-flex';
+    }, 3000); // 3 seconds
+
+    closeBtn.addEventListener('click', () => {
+      notice.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

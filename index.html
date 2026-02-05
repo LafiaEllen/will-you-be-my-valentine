@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Kushi, My Love ♡</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="index-page">
+  <div class="card index-card">
+    <div class="gif-wrap">
+      <img id="yuriGif" src="https://media1.tenor.com/m/DbIuA6AVUWMAAAAd/yuri-anime.gif" alt="Yuri anime couple" />
+    </div>
+
+    <p class="caption">A VERY SERIOUS QUESTION!!!</p>
+
+    <h1>Kushi, My Love &lt;3<br>Will You Be My Valentine?</h1>
+    <p class="subtitle">Choose carefully, or the universe will gently bully you into saying yes~</p>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes ૮꒰ ˶• ༝ •˶꒱ა ♡</button>
+      <button id="noBtn">No ૮₍˶ ╥ ‸ ╥ ⑅₎ა</button>
+    </div>
+
+    <div class="message" id="message"></div>
+  </div>
+
+<script>
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn  = document.getElementById('noBtn');
+  const msg    = document.getElementById('message');
+  const gifEl  = document.getElementById('yuriGif');
+
+  const yuriGifs = [
+    "https://media1.tenor.com/m/ZYKgByleI40AAAAd/anime-sakura.gif",
+    "https://media.tenor.com/oyJR8W48XsQAAAAj/watayuri-watashi-no-yuri-wa-oshigoto-desu.gif",
+    "https://media1.tenor.com/m/q0IBgdn2PwAAAAAd/alien9-alien-nine.gif",
+    "https://media1.tenor.com/m/448yv42tcK4AAAAC/cute-anime.gif",
+    "https://media1.tenor.com/m/4VOz-VhqeY4AAAAd/yuri-girl.gif",
+    "https://media1.tenor.com/m/k3GNjkeSTJcAAAAd/cry-llorar.gif"
+  ];
+
+  // preload gifs
+  const preloadedGifs = [];
+  yuriGifs.forEach((url) => {
+    const img = new Image();
+    img.src = url;
+    preloadedGifs.push(img);
+  });
+
+  // messages to loop
+  const messages = [
+    "E-eh? Kushi, are you teasing me? 🥺",
+    "WHY NO?!! 💔",
+    "Don't you love me? 🥹",
+    "I am dying... 😞",
+    "I am ded... 💀",
+    "You gotta say yes to revive me... 😖"
+  ];
+
+  let yesScale = 1;
+  let noClicks = 0;
+
+  function changeGif() {
+    const index = noClicks % yuriGifs.length;
+    gifEl.src = yuriGifs[index];
+  }
+
+  noBtn.addEventListener('click', () => {
+    noClicks++;
+
+    // grow Yes button
+    yesScale = Math.min(yesScale + 0.22, 1.9);
+    yesBtn.style.transform = "scale(" + yesScale + ")";
+    yesBtn.style.transition = "transform 0.16s ease";
+
+    // change gif
+    changeGif();
+
+    // loop messages forever
+    const msgIndex = (noClicks - 1) % messages.length;
+    msg.textContent = messages[msgIndex];
+  });
+
+  yesBtn.addEventListener('click', () => {
+    window.location.href = "yes.html";
+  });
+</script>
+
+</body>
+</html>
